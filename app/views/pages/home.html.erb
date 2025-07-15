@@ -1,0 +1,36 @@
+<div class="min-h-screen bg-gradient-to-br from-blue-500 to-red-500 flex items-center justify-center px-4">
+  <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+    <h1 class="text-4xl font-extrabold text-gray-800 mb-6">Welcome to Sebox</h1>
+
+    <!-- Create Game -->
+    <div>
+      <a href="/games/new" class="cursor-pointer w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:opacity-90 transition font-semibold block">
+        🎮 Create a Game
+      </a>
+    </div>
+
+    <!-- Divider -->
+    <div class="flex items-center my-6">
+      <div class="flex-grow border-t border-gray-300"></div>
+      <span class="mx-4 text-gray-500 font-semibold">OR</span>
+      <div class="flex-grow border-t border-gray-300"></div>
+    </div>
+
+    <!-- Join Game -->
+    <form action="/games/join" method="POST" class="space-y-3">
+      <input
+        type="text"
+        name="join_code"
+        placeholder="Enter Join Code"
+        class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        required
+        />
+      <button
+        type="submit"
+        class="cursor-pointer w-full py-3 bg-green-600 text-white rounded-xl hover:bg-green-500 transition font-semibold"
+      >
+        🔗 Join Game
+      </button>
+    </form>
+  </div>
+</div>
