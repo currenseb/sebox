@@ -1,0 +1,19 @@
+current directory: /home/curren/sebox/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+/home/curren/.local/share/mise/installs/ruby/3.4.4/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/curren/sebox/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250729-59664-litlz8 sitelibdir\=./.gem.20250729-59664-litlz8 clean
+
+current directory: /home/curren/sebox/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250729-59664-litlz8 sitelibdir\=./.gem.20250729-59664-litlz8
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/curren/sebox/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250729-59664-litlz8 sitelibdir\=./.gem.20250729-59664-litlz8 install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20250729-59664-litlz8/debug
+
+current directory: /home/curren/sebox/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250729-59664-litlz8 sitelibdir\=./.gem.20250729-59664-litlz8 clean

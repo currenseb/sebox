@@ -14,7 +14,10 @@ Rails.application.routes.draw do
 
   # delete "/products/:id", to: "products#destroy"
 
-  resources :products
+  resources :products do
+    resources :subscribers, only: [ :create ]
+    resource :unsubscribe, only: [ :show ]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "products#index"
