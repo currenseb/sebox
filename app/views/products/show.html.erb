@@ -1,13 +1,17 @@
-<% cache @product do%>
-  <hi><%= @product.name %></hi>
-  <%= @product.description %>
+<% cache @product do %>
+  <h1 class="text-3xl font-bold text-gray-800 mb-4"><%= @product.name %></h1>
+  <div class="prose max-w-none mb-6"><%= @product.description %></div>
 <% end %>
 
-<%= image_tag @product.featured_image if @product.featured_image.attached? %>
+<%= image_tag @product.featured_image, class: "rounded-lg shadow-md mb-4 max-w-md" if @product.featured_image.attached? %>
+
 <%= render "inventory", product: @product %>
 
-<%= link_to "Back", products_path %>
-<% if authenticated? %>
-  <%= link_to "Edit", edit_product_path(@product) %>
-  <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-<% end %>
+<div class="mt-6 space-x-4">
+  <%= link_to "Back", products_path, class: "text-blue-600 hover:underline" %>
+  <% if authenticated? %>
+    <%= link_to "Edit", edit_product_path(@product), class: "text-yellow-600 hover:underline" %>
+    <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure?" },
+                  class: "text-red-600 hover:underline" %>
+  <% end %>
+</div>

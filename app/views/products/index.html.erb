@@ -1,12 +1,14 @@
-<h1>Products</h1>
+<h1 class="text-3xl font-bold mb-4">Products</h1>
 
-<%= link_to "New product", new_product_path if authenticated? %>
-<%= link_to "Login", new_session_path unless authenticated? %>
+<div class="mb-4 space-x-4">
+  <%= link_to "New Product", new_product_path, class: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" if authenticated? %>
+  <%= link_to "Login", new_session_path, class: "text-blue-600 hover:underline" unless authenticated? %>
+</div>
 
-<div id="products">
+<div id="products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
   <% @products.each do |product| %>
-    <div>
-      <%= link_to product.name, product %>
+    <div class="p-4 border rounded shadow hover:shadow-lg transition">
+      <%= link_to product.name, product, class: "text-lg font-semibold text-indigo-700 hover:underline" %>
     </div>
   <% end %>
 </div>
