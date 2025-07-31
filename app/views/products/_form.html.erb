@@ -1,25 +1,25 @@
-<%= form_with model: product do |form| %>
+<%= form_with model: product, class: "space-y-6" do |form| %>
   <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :name, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.rich_text_area :description %>
+    <%= form.label :description, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.rich_text_area :description, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" %>
   </div>
 
   <div>
-    <%= form.label :featured_image, style: "display: block" %>
-    <%= form.file_field :featured_image, accept: "image/*" %>
+    <%= form.label :featured_image, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.file_field :featured_image, accept: "image/*", class: "mt-1 block w-full text-sm text-gray-500" %>
   </div>
 
   <div>
-    <%= form.label :inventory_count, style: "display: block" %>
-    <%= form.number_field :inventory_count %>
+    <%= form.label :inventory_count, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.number_field :inventory_count, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Save", class: "inline-flex justify-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700" %>
   </div>
 <% end %>
