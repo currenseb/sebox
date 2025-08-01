@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     resource :unsubscribe, only: [ :show ]
   end
 
+  resource :session, only: [:new, :create, :destroy]
+  get  '/signup', to: 'sessions#signup',  as: 'signup'
+  post '/signup', to: 'sessions#register'
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "pages#home"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
