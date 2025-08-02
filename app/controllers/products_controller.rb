@@ -38,12 +38,17 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def home
+    @products = Product.all
+  end
+
+  def product_params
+    params.expect(product: [ :name, :description, :featured_image, :inventory_count, :price ])
+  end
+
   private
   def set_product
     @product = Product.find(params[:id])
   end
 
-  def product_params
-    params.expect(product: [ :name, :description, :featured_image, :inventory_count ])
-  end
 end

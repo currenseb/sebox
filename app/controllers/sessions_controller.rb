@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 
-
   allow_unauthenticated_access only: %i[new create signup register]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
 
@@ -25,6 +24,7 @@ class SessionsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       start_new_session_for @user
+      @user.create_cart
       redirect_to root_path, notice: "Account created!"
     else
       render :signup
@@ -34,6 +34,20 @@ class SessionsController < ApplicationController
   def destroy
     terminate_session
     redirect_to new_session_path
+  end
+
+  helper_method :current_user
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def start_new_session_for(user)
+    session[:user_id] = user.id
+  end
+
+  def terminate_session
+    reset_session
   end
 
   private

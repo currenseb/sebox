@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   end
 
   resource :session, only: [:new, :create, :destroy]
+  resources :cart_items, only: [:create, :destroy]
+  resource :cart, only: [:show]
   get  '/signup', to: 'sessions#signup',  as: 'signup'
   post '/signup', to: 'sessions#register'
 
