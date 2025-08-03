@@ -57,3 +57,5 @@ package-lock.json
 *.db
 docker-compose.override.yml
 
+.kamal/secrets/*
+.kamal/secrets/*
