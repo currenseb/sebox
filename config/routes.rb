@@ -25,6 +25,15 @@ Rails.application.routes.draw do
   get  '/signup', to: 'sessions#signup',  as: 'signup'
   post '/signup', to: 'sessions#register'
   get "/contact", to: "pages#contact", as: :contact
+  get '/checkout', to: 'checkout#new'
+  post '/checkout', to: 'checkout#create'
+
+  resources :users, only: [] do
+    member do
+      get :edit_address
+      patch :update_address
+    end
+  end
 
 
 

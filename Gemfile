@@ -40,6 +40,13 @@ gem "thruster", require: false
 # Add Tailwind CSS
 gem "tailwindcss-rails"
 
+# Add Stripe for API calls
+gem "stripe"
+
+#.env
+gem "dotenv-rails", groups: [:development, :test]
+
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
