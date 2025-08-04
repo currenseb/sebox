@@ -3,8 +3,13 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy]
 
   def index
-    @products = Product.all
+    if params[:query].present?
+      @products = Product.where("name LIKE ?", "%#{params[:query]}%")
+    else
+      @products = Product.all
+    end
   end
+
 
   def show
   end
@@ -46,7 +51,16 @@ class ProductsController < ApplicationController
     params.expect(product: [ :name, :description, :featured_image, :inventory_count, :price ])
   end
 
+  before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
+
   private
+
+  def require_admin
+    unless current_user&.email_address == "currensebastian@gmai.com"
+      redirect_to products_path, alert: "You are not authorized to perform this action."
+    end
+  end
+
   def set_product
     @product = Product.find(params[:id])
   end

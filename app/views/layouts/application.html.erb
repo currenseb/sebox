@@ -36,11 +36,11 @@
   <!-- Right: Logout button -->
   <div>
     <% if authenticated? %>
-      <%= button_to "Log out", session_path, method: :delete, class: "text-red-600 hover:underline inline-block" %>
+      <%= button_to "Log out", session_path, method: :delete, class: "text-red-600 font-semibold hover:underline inline-block" %>
     <% else %>
       <!-- Else Show Log In Button -->
-      <%= button_to "Log In", session_path, method: :delete, class: "text-red-600 hover:underline inline-block" %>
-    <% end %>
+      <%= link_to "Sign In", new_session_path, class: "text-blue-600 font-semibold hover:underline inline-block" %>
+  <% end %>
   </div>
 </nav>
 

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
   get  '/signup', to: 'sessions#signup',  as: 'signup'
   post '/signup', to: 'sessions#register'
+  get "/contact", to: "pages#contact", as: :contact
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

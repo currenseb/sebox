@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = User.authenticate_by(params.permit(:email_address, :password))
+    if user = User.authenticate_by(**params.permit(:email_address, :password))
       start_new_session_for user
       redirect_to after_authentication_url
     else
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
       @user.create_cart
       redirect_to root_path, notice: "Account created!"
     else
-      render :signup
+      render :signup, status: :unprocessable_entity
     end
   end
 
@@ -38,16 +38,13 @@ class SessionsController < ApplicationController
 
   helper_method :current_user
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
-
   def start_new_session_for(user)
     session[:user_id] = user.id
   end
 
   def terminate_session
     reset_session
+    @current_user = nil
   end
 
   private

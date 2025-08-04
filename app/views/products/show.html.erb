@@ -15,8 +15,9 @@
 <div class="mt-6 space-x-4">
   <%= link_to "Back", products_path, class: "text-blue-600 hover:underline" %>
   <% if authenticated? %>
-    <%= link_to "Edit", edit_product_path(@product), class: "text-yellow-600 hover:underline" %>
-    <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure?" },
-                  class: "text-red-600 hover:underline" %>
+    <% if current_user&.email_address == "currensebastian@gmail.com" %>
+      <%= link_to "Edit", edit_product_path(@product), class: "text-yellow-600 hover:underline" %>
+      <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-red-600 hover:underline" %>
+    <% end %>
   <% end %>
 </div>
