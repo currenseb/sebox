@@ -10,7 +10,7 @@
 
   <%= yield :head %>
 
-  <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+  <%# PWA manifest (optional) %>
   <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
   <link rel="icon" href="/icon.png" type="image/png">
@@ -22,36 +22,40 @@
 </head>
 
 <body class="min-h-screen bg-gray-50 text-gray-900 font-sans">
-<nav class="bg-white shadow p-4 flex items-center justify-between">
-  <!-- Left: Home link -->
-  <div>
-    <%= link_to "Home", root_path, class: "text-blue-600 hover:underline font-medium" %>
-  </div>
+<!-- Navbar -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 
-  <!-- Center: Site Title -->
-  <div class="text-center">
-    <h1 class="text-3xl font-bold text-gray-800">The Sebox Store</h1>
-  </div>
+    <!-- Left: Home link -->
+    <%= link_to "Home", root_path, class: "text-blue-600 font-medium hover:text-blue-800 transition" %>
 
-  <!-- Right: Logout button -->
-  <div>
-    <% if authenticated? %>
-      <%= button_to "Log out", session_path, method: :delete, class: "text-red-600 font-semibold hover:underline inline-block" %>
-    <% else %>
-      <!-- Else Show Log In Button -->
-      <%= link_to "Sign In", new_session_path, class: "text-blue-600 font-semibold hover:underline inline-block" %>
-  <% end %>
+    <!-- Center: Site Title -->
+    <h1 class="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">
+      The Sebox Store
+    </h1>
+
+    <!-- Right: Auth buttons -->
+    <div>
+      <% if authenticated? %>
+        <%= button_to "Log out", session_path, method: :delete,
+                      class: "text-red-600 font-semibold hover:text-red-800 transition" %>
+      <% else %>
+        <%= link_to "Sign In", new_session_path,
+                    class: "text-blue-600 font-semibold hover:text-blue-800 transition" %>
+      <% end %>
+    </div>
   </div>
 </nav>
 
-
+<!-- Flash Notice -->
 <% if notice.present? %>
-  <div class="bg-green-100 text-green-800 p-3 text-sm text-center">
+  <div class="bg-green-100 border border-green-300 text-green-800 px-4 py-2 text-sm text-center shadow-sm">
     <%= notice %>
   </div>
 <% end %>
 
-<main class="p-6 max-w-4xl mx-auto">
+<!-- Main Content -->
+<main class="p-6 max-w-7xl mx-auto">
   <%= yield %>
 </main>
 </body>

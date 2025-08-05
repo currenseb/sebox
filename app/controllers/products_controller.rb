@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
   private
 
   def require_admin
-    unless current_user&.email_address == "currensebastian@gmai.com"
+    unless current_user&.email_address == "currensebastian@gmail.com"
       redirect_to products_path, alert: "You are not authorized to perform this action."
     end
   end
