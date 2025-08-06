@@ -2,9 +2,7 @@
   <!-- Product Title & Back -->
   <div class="flex items-center justify-between mb-3">
     <h1 class="text-3xl font-bold text-gray-900"><%= @product.name %></h1>
-    <%= link_to "← Back",
-                products_path,
-                class: "bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1.5 rounded-lg shadow-sm text-sm transition" %>
+    <%= link_to "← Back", products_path, class: "bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1.5 rounded-lg shadow-sm text-sm transition" %>
   </div>
 
   <!-- Description -->
@@ -32,8 +30,15 @@
 
 <!-- Add to Cart -->
 <div class="mb-6">
-  <%= button_to "Add to Cart", cart_items_path(product_id: @product.id), method: :post, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg shadow-sm transition" %>
+  <% if @product.inventory_count.to_i > 0 %>
+    <%= button_to "Add to Cart", cart_items_path(product_id: @product.id), method: :post, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg shadow-sm transition" %>
+  <% else %>
+    <p class="text-red-500 font-semibold"></p>
+  <% end %>
 </div>
+
+
+
 
 <!-- Admin Actions -->
 <% if authenticated? && current_user&.email_address == "currensebastian@gmail.com" %>
