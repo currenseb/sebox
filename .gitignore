@@ -1,61 +1,59 @@
-# See https://help.github.com/articles/ignoring-files for more about ignoring files.
-
-# Bundler config
-/.bundle
-
-# Environment variable files
-.env*
-/config/master.key
-
-# Log and temp files
-/log/*
-!/log/.keep
-/tmp/*
-!/tmp/.keep
-
-# PIDs
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
-
-# Active Storage (uploaded files)
-/storage/*
-!/storage/.keep
-/tmp/storage/*
-!/tmp/storage/
-!/tmp/storage/.keep
-
-# Public assets (precompiled)
-/public/assets
-
-# Asset builds
-/app/assets/builds/*
-!/app/assets/builds/.keep
-
-# Vendor directory (optional)
-../vendor/
-
-# === Editor and OS junk ===
-.idea/
-.vscode/
-.DS_Store
-Thumbs.db
-*.swp
-
-# Byebug
-.byebug_history
-
-# Node (if using Tailwind via npm or yarn)
-/node_modules/
-yarn.lock
-package-lock.json
-
-# Docker
+# === General ===
 *.log
 *.pid
 *.sock
 *.db
-docker-compose.override.yml
+*.swp
+*.yaml
+*.env*
 
-.kamal/secrets/KAMAL_REGISTRY_PASSWORD
+# === Rails Runtime & Temp ===
+/core/log/*
+!/core/log/.keep
 
+/core/tmp/*
+!/core/tmp/.keep
+
+/core/tmp/pids/*
+!/core/tmp/pids/
+!/core/tmp/pids/.keep
+
+/core/storage/*
+!/core/storage/.keep
+
+/core/tmp/storage/*
+!/core/tmp/storage/
+!/core/tmp/storage/.keep
+
+# === Rails Build Artifacts ===
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+/public/assets
+
+# === Environment & Secrets ===
+.env*
+/config/master.key
+/deploy/.kamal/secrets/KAMAL_REGISTRY_PASSWORD
+
+# === Vendor and Package Management ===
+/vendor/
+/.bundle/
+/node_modules/
+yarn.lock
+package-lock.json
+
+# === Devtools ===
+/devtools/Gemfile.lock
+
+# === IDE, OS, and Editor Junk ===
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# === Byebug and Debugging ===
+.byebug_history
+
+# === RubyMine generated ===
+/docs/rbs_collection/
