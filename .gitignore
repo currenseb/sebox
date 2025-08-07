@@ -33,7 +33,7 @@
 !/app/assets/builds/.keep
 
 # Vendor directory (optional)
-vendor/
+../vendor/
 
 # === Editor and OS junk ===
 .idea/
