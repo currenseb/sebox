@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
-  def require_login
+  def require_authentication
     unless current_user
       redirect_to new_session_path, alert: "You must be logged in to access your cart."
     end

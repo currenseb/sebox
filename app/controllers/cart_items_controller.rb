@@ -1,5 +1,5 @@
 class CartItemsController < ApplicationController
-  before_action :require_login
+  before_action :require_authentication
 
   def create
     product = Product.find(params[:product_id])
@@ -10,10 +10,17 @@ class CartItemsController < ApplicationController
     end
 
     cart = current_user.cart
-    item = cart.cart_items.find_or_initialize_by(product_id: product.id)
-    item.quantity ||= 0
-    item.quantity += 1
-    item.save!
+
+    ActiveRecord::Base.transaction do
+      item = cart.cart_items.find_or_initialize_by(product_id: product.id)
+      item.quantity ||= 0
+      item.quantity += 1
+      item.save!
+
+      product.inventory_count -= 1
+      product.save!
+    end
+
     redirect_to product_path(product), notice: "Added to cart!"
   end
 
