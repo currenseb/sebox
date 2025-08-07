@@ -1,6 +1,6 @@
 # 🛒 Sebox E-Commerce Store
 
-Sebox is a full-stack e-commerce web application built with Ruby on Rails and styled using Tailwind CSS. It supports essential online shopping features like user authentication, product browsing, cart management, and a secure checkout process using Stripe.
+Sebox is a full-stack e-commerce web application built with Ruby on Rails and styled using Tailwind CSS. It supports essential online shopping features like user authentication, product browsing, cart management, and a secure checkout process using a Stripe API call.
 
 ---
 
